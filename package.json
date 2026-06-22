@@ -1,0 +1,20 @@
+{
+  "name": "ielts-prep-tracker",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Local IELTS prep tracker with GitHub-style calendar heatmap and single-file JSON storage.",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "NODE_ENV=development node server.js",
+    "test": "node scripts/smoke-test.js"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "dependencies": {
+    "dayjs": "^1.11.13",
+    "express": "^4.19.2"
+  }
+}
+

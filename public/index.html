@@ -1,0 +1,155 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>IELTS 备考记录器</title>
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body>
+    <header class="top-bar">
+      <h1>IELTS 备考记录器</h1>
+    </header>
+
+    <main class="layout">
+      <section class="main-panel">
+        <div class="tabs" id="view-tabs">
+          <button data-view="contributions" class="tab">52周热力图</button>
+          <button data-view="month" class="tab">月历视图</button>
+          <button data-view="list" class="tab">列表视图</button>
+        </div>
+
+        <section id="contributions-view" class="view-panel hidden">
+          <div class="panel-head">
+            <h2>最近 52 周训练热力图</h2>
+            <div class="legend">
+              <span>少</span>
+              <span class="legend-box level-0"></span>
+              <span class="legend-box level-1"></span>
+              <span class="legend-box level-2"></span>
+              <span class="legend-box level-3"></span>
+              <span class="legend-box level-4"></span>
+              <span>多</span>
+            </div>
+          </div>
+          <div class="contributions-graph" id="contributions-graph">
+            <div class="contributions-inner">
+              <div class="months-row">
+                <div class="months-spacer"></div>
+                <div id="contributions-months" class="contributions-months"></div>
+              </div>
+              <div class="calendar-row">
+                <div class="contributions-weekdays" aria-hidden="true">
+                  <span></span>
+                  <span>Mon</span>
+                  <span></span>
+                  <span>Wed</span>
+                  <span></span>
+                  <span>Fri</span>
+                  <span></span>
+                </div>
+                <div id="contributions-calendar" class="contributions-calendar"></div>
+              </div>
+            </div>
+          </div>
+          <p class="small-note">热力强度按每日总训练分钟数：0 / 1-30 / 31-60 / 61-120 / 120+</p>
+        </section>
+
+        <section id="month-view" class="view-panel hidden">
+          <div class="panel-head">
+            <h2>月历视图</h2>
+            <div>
+              <button id="prev-month" class="small-btn">上个月</button>
+              <span id="month-label"></span>
+              <button id="next-month" class="small-btn">下个月</button>
+            </div>
+          </div>
+          <div id="month-calendar" class="month-calendar"></div>
+        </section>
+
+        <section id="list-view" class="view-panel hidden">
+          <h2>列表视图（最近 30 天）</h2>
+          <div id="list-container"></div>
+        </section>
+      </section>
+
+      <aside class="side-panel" id="day-panel">
+        <h2 id="selected-date-title">选择日期</h2>
+        <div id="day-summary" class="summary"></div>
+
+        <section>
+          <h3>当日记录</h3>
+          <div id="entries-container" class="entries"></div>
+        </section>
+
+        <section>
+          <h3>新增记录</h3>
+          <form id="entry-form">
+            <label>
+              记录类型
+              <select name="entryType" required>
+                <option value="practice">训练</option>
+                <option value="mock">模考/真题</option>
+              </select>
+            </label>
+
+            <label>
+              标题（可空）
+              <input type="text" name="title" placeholder="如：口语Part2 / Cambridge 18 Test 2" />
+            </label>
+
+            <label>
+              部分（可空）
+              <input type="text" name="section" placeholder="如：口语 / 听力Section 3" />
+            </label>
+
+            <label>
+              来源（可空）
+              <input type="text" name="source" placeholder="如：剑雅17 / 自建题库" />
+            </label>
+
+            <label>
+              用时分钟（可空）
+              <input type="number" name="durationMinutes" min="0" step="1" />
+            </label>
+
+            <label>
+              总分（可空，四项齐全后会自动计算）
+              <input type="number" name="totalScore" min="0" step="0.5" />
+            </label>
+            <div id="total-score-hint" class="field-hint">填写听力、阅读、写作、口语后，会自动算出总分</div>
+
+            <div class="score-grid">
+              <label>
+                听力（可空）
+                <input type="number" name="listeningScore" min="0" max="9" step="0.5" />
+              </label>
+              <label>
+                阅读（可空）
+                <input type="number" name="readingScore" min="0" max="9" step="0.5" />
+              </label>
+              <label>
+                写作（可空）
+                <input type="number" name="writingScore" min="0" max="9" step="0.5" />
+              </label>
+              <label>
+                口语（可空）
+                <input type="number" name="speakingScore" min="0" max="9" step="0.5" />
+              </label>
+            </div>
+
+            <label>
+              备注（可空）
+              <textarea name="note" rows="3" placeholder="如：6月2号练了30分钟口语"></textarea>
+            </label>
+
+            <button type="submit" class="primary-btn">保存到所选日期</button>
+          </form>
+        </section>
+      </aside>
+    </main>
+
+    <script src="/app.js" type="module"></script>
+  </body>
+</html>
+
